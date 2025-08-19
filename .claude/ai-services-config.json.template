@@ -1,0 +1,107 @@
+{
+  "version": "1.0.0",
+  "services": {
+    "zhipu": {
+      "name": "智谱轻言",
+      "api_base": "https://open.bigmodel.cn/api/paas/v4/chat/completions",
+      "api_key": "YOUR_API_KEY_HERE",
+      "models": {
+        "glm-4-flash": {
+          "name": "GLM-4-Flash",
+          "type": "free",
+          "max_tokens": 4096,
+          "temperature": 0.7
+        },
+        "glm-4-air": {
+          "name": "GLM-4-Air",
+          "type": "paid",
+          "max_tokens": 8192,
+          "temperature": 0.7
+        },
+        "glm-4": {
+          "name": "GLM-4",
+          "type": "paid",
+          "max_tokens": 8192,
+          "temperature": 0.7
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer {api_key}"
+      },
+      "enabled": false
+    },
+    "silicon": {
+      "name": "硅基流动",
+      "api_base": "https://api.siliconflow.cn/v1/chat/completions",
+      "api_key": "YOUR_API_KEY_HERE",
+      "models": {
+        "deepseek-v2.5": {
+          "name": "DeepSeek-V2.5",
+          "type": "free",
+          "max_tokens": 4096,
+          "temperature": 0.7
+        },
+        "qwen2.5-72b-instruct": {
+          "name": "Qwen2.5-72B-Instruct",
+          "type": "free",
+          "max_tokens": 4096,
+          "temperature": 0.7
+        },
+        "meta-llama-3.1-70b-instruct": {
+          "name": "Meta-Llama-3.1-70B-Instruct",
+          "type": "free",
+          "max_tokens": 4096,
+          "temperature": 0.7
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer {api_key}"
+      },
+      "enabled": false
+    },
+    "openai": {
+      "name": "OpenAI",
+      "api_base": "https://api.openai.com/v1/chat/completions",
+      "api_key": "YOUR_API_KEY_HERE",
+      "models": {
+        "gpt-3.5-turbo": {
+          "name": "GPT-3.5-Turbo",
+          "type": "paid",
+          "max_tokens": 4096,
+          "temperature": 0.7
+        },
+        "gpt-4": {
+          "name": "GPT-4",
+          "type": "paid",
+          "max_tokens": 8192,
+          "temperature": 0.7
+        },
+        "gpt-4o-mini": {
+          "name": "GPT-4O-Mini",
+          "type": "paid",
+          "max_tokens": 4096,
+          "temperature": 0.7
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer {api_key}"
+      },
+      "enabled": false
+    }
+  },
+  "global_settings": {
+    "timeout": 30000,
+    "max_retries": 3,
+    "parallel_requests": false,
+    "default_temperature": 0.7,
+    "output_format": "structured"
+  },
+  "prompts": {
+    "analysis_template": "请分析以下内容并提供结构化输出：\n\n{content}\n\n请从以下角度进行分析：\n1. 代码质量评估\n2. 潜在问题识别\n3. 改进建议\n4. 最佳实践推荐\n\n输出格式要求：\n- 使用清晰的结构\n- 提供具体的建议\n- 标注置信度（1-10分）",
+    "code_review_template": "请对以下代码进行代码审查：\n\n```{language}\n{code}\n```\n\n审查重点：\n1. 代码规范性\n2. 性能优化\n3. 安全性\n4. 可维护性\n5. 错误处理\n\n请提供具体的修改建议。",
+    "bug_analysis_template": "请分析以下错误或问题：\n\n错误信息：{error}\n相关代码：\n```{language}\n{code}\n```\n\n请提供：\n1. 问题根因分析\n2. 解决方案\n3. 预防措施\n4. 相关最佳实践"
+  }
+}

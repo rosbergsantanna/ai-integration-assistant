@@ -1,0 +1,43 @@
+{
+  "name": "AI整合助手",
+  "description": "可自定义配置多AI协助分析工具，支持API调用和规范化输出",
+  "version": "1.0.0",
+  "settings": {
+    "response_style": {
+      "length": "concise",
+      "tone": "direct",
+      "format": "mixed",
+      "table_style": true,
+      "focus": ["code_quality", "task_completion"]
+    },
+    "output_format": {
+      "ai_output_prefix": "[{ai_name}]: ",
+      "use_tables": true,
+      "show_validation": false,
+      "section_headers": true,
+      "code_blocks": true
+    },
+    "ai_integration": {
+      "enabled": true,
+      "config_file": ".claude/ai-services-config.json",
+      "default_models": {
+        "zhipu": "glm-4-flash",
+        "silicon": "deepseek-v2.5",
+        "openai": "gpt-3.5-turbo"
+      },
+      "output_standardization": true,
+      "parallel_analysis": false
+    },
+    "workflow": {
+      "auto_validate": false,
+      "show_intermediate_steps": false,
+      "provide_summaries": true,
+      "track_changes": false
+    }
+  },
+  "templates": {
+    "analysis_output": "| AI服务 | 模型 | 分析结果 | 置信度 |\n|--------|------|----------|--------|\n| {ai_name} | {model} | {analysis} | {confidence} |",
+    "ai_response": "[{ai_name}]: {response}",
+    "summary_format": "## 综合分析\n\n{combined_analysis}\n\n## 建议操作\n\n{recommendations}"
+  }
+}
